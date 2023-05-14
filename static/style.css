@@ -1,34 +1,32 @@
 body{
-    margin: 0;
-    overflow: hidden;
+    margin-top: 0px;
+    
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     background: #012807
 
 }
+
 .tour{
-    background: #012807;
-    height: 100vh;
-    margin-top: 10px;
-    
+    margin-top: -30px;
+
 }
 
 
-
 .tour__head{
-    padding-top: 10vh;
+    
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
-    margin-bottom: 10px;
-    margin-top: -100px;
-    font-size: 28px;
+    font-size: 25px;
+
 }
 
 
 
 .image-container{
    margin: auto;
-    height: 40rem ;
+   margin-top: 0px;
+    height: 35rem ;
     width: 76% ;
 
     position: relative;
