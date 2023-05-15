@@ -1,14 +1,20 @@
-const foto1 = new PANOLENS.ImagePanorama( 'static/images/foto1.jpeg' );
-
-const foto2 = new PANOLENS.ImagePanorama('static/images/foto2.jpeg');
-const foto3= new PANOLENS.ImagePanorama('static/images/foto3.jpg');
-const foto4 = new PANOLENS.ImagePanorama('static/images/foto4.jpeg');
-const foto5 = new PANOLENS.ImagePanorama('static/images/foto5.jpeg');
 
 
+var local = "static/images/foto0.jpg";
+const fotos = []
+
+for (var i = 0; i < 13; i++) {
+
+  local = local.replace("foto"+(i-1),"foto"+i);
+  fotos.push(new PANOLENS.ImagePanorama( local ));
+  
+}
 
 
-let imageContainer = document.querySelector('.image-container')
+
+
+
+let imageContainer = document.querySelector('.image-container');
 
 
 var infospotPositions = [
@@ -21,29 +27,56 @@ var infospotPositions = [
 
 const viewer = new PANOLENS.Viewer({
     container: imageContainer,
-    autoRotate: true,
+    autoRotate: false,
     autoRotateSpeed: 0.3,
     controlBar: true,
 });
 
+fotos[12].link(fotos[0],new THREE.Vector3( 3000, 10, -100) );
+fotos[0].link(fotos[12],new THREE.Vector3( -3000, 10, -100) );
+
+fotos[0].link(fotos[1],new THREE.Vector3(3100,  0, 200 ));
+fotos[1].link(fotos[0],new THREE.Vector3(2800, -100,-100));
 
 
-foto1.link(foto2,infospotPositions[0])
-foto2.link(foto1,infospotPositions[1])
+fotos[1].link(fotos[2],new THREE.Vector3(-1000,10,-2000));
+fotos[2].link(fotos[1],new THREE.Vector3(-2000,-50,0));
+
+fotos[2].link(fotos[3],new THREE.Vector3(3000, 10, -200));
+fotos[3].link(fotos[2],new THREE.Vector3(-3000, -10, 200));
+
+fotos[3].link(fotos[4],new THREE.Vector3(3000, -10, -1000));
+fotos[4].link(fotos[3],new THREE.Vector3( -1000 , 0,-2800));
 
 
+fotos[4].link(fotos[5],new THREE.Vector3( 3000, 10, -100) );
+fotos[5].link(fotos[4],new THREE.Vector3( -3000, 0, -100) );
 
-foto2.link(foto3,infospotPositions[0])
-foto3.link(foto2,infospotPositions[1])
+fotos[5].link(fotos[6],new THREE.Vector3( 3000, 10, 0) );
+fotos[6].link(fotos[5],new THREE.Vector3( -3000, 10, 100) );
 
-foto3.link(foto4,infospotPositions[0])
-foto4.link(foto3,infospotPositions[1])
+fotos[6].link(fotos[7],new THREE.Vector3( 3000, 10, -100) );
+fotos[7].link(fotos[6],new THREE.Vector3( -3000, 10, -50) );
 
-foto4.link(foto5,infospotPositions[0])
-foto5.link(foto4,infospotPositions[1])
+fotos[7].link(fotos[8],new THREE.Vector3( 3000, -20, 0) );
+fotos[8].link(fotos[7],new THREE.Vector3( -3000, 10, -100) );
+
+fotos[1].link(fotos[9],new THREE.Vector3( -300, 10, 4000) );
+fotos[9].link(fotos[1],new THREE.Vector3( -3000, 10, -100) );
+
+fotos[9].link(fotos[10],new THREE.Vector3( 3000, 10, -100) );
+fotos[10].link(fotos[9],new THREE.Vector3( 3000, 10, -100) );
+
+fotos[10].link(fotos[11],new THREE.Vector3( -3000, 10, -100) );
+fotos[11].link(fotos[10],new THREE.Vector3( -3000, 10, -300) );
 
 
+viewer.add(fotos[12])
 
 
-viewer.add( foto2,foto1,foto3,foto4,foto5 );
+fotos.forEach(function(foto){
+  viewer.add(foto);
+});
+
+
 
