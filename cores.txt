@@ -1,0 +1,3 @@
+azul #2a6f92
+
+viewer = new PANOLENS.Viewer({output: 'console'});

@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <title>UNEMAT</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link href="{{url_for('static',filename='style.css')}}"
+   <link href="{{url_for('static',filename='style.css')}}">
 
 </head>
 <body>
-    <div class="tour">
-        <div class="container">
-            <div class="tour__head">
-                <h2>Polo UNEMAT</h2>
+
+
+    <header>
+
+        <nav>
+            <div class="container-nav">
+
+                <a class="navbar-brand" href="https://colider.unemat.br">
+                    <div class="img-logo-div">
+                        <img class="img-logo" src="{{url_for('static',filename='/images/colider_icon.png')}}" alt="Logo Unemat">
+                    </div>
+                </a>
             </div>
 
-            <div class="image-container"></div>
+        </nav>
+
+    </header>
+
+    <div class="tour">
+        <div class="container">
+            <div class="image-container">
+                <div class="mapa" id="mapa" style="visibility: hidden;">
+                <img id="img" class="img-map" src="{{url_for('static',filename='images/mapa_unemat_1.png')}}" alt="" style="display: none;">
+                    <div class="button-set-panorama" id="bsp" style="visibility: hidden;"></div>
+                </div>
+
+                <button class="mapa-button" onclick="clic()" ontouchstart="clic()">
+                    <img class="img-icon-map" src="{{url_for('static',filename='images/map_icon.png')}}" alt="">
+                </button>
+
+            </div>
         </div>
     </div>
 
+
+
+    <script src=" {{url_for('static',filename='js/mapa.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
     <script src=" {{url_for('static',filename='js/panolens.min.js')}} "></script>
     <script src=" {{url_for('static',filename='js/main.js')}}"></script>
+    
 </body>
 </html>
